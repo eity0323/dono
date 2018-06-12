@@ -1,7 +1,7 @@
 
 
 const path = require('path');
-const webpackDevConfig = require('../config/webpack.dev.config');
+const webpackDevConfig = require('../../config/webpack.dev.config');
 
 
 

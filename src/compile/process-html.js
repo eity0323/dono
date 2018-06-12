@@ -7,7 +7,7 @@ const cheerio = require('cheerio');
 const projectPath = process.cwd();
 const mergeTpl = require('./mergeTpl');
 
-const webpackDevConfig = require('../config/webpack.dev.config');
+const webpackDevConfig = require('../../config/webpack.dev.config');
 
 
 module.exports = async () => {

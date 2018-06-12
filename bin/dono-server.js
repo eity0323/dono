@@ -1,11 +1,12 @@
 #!usr/bin/env node
 
 const program = require('commander');
-const start = require('../src/compile/dono-start');
+const donoServer = require('../src/server/dono-server');
+
 
 
 program
 	.parse(process.argv);
 
 
-start({env: 'development'});
+donoServer();

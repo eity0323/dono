@@ -1,0 +1,10 @@
+{
+    "less-theme": "./src/common/style/theme.js",
+    "publicPath": "/",
+    "dll-output-path": "./assets",
+    "output-path": "",
+    "server-root": "./assets",
+    "mock-config": "./build/server/config.js",
+    "common-template": "./build/template.js",
+    "view-engine": "default"
+}

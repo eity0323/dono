@@ -2,18 +2,29 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const manifest = require('../assets/common/javascript/vendor-manifest.json');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const entryConfig = require('./entry.config');
 
-let theme = require('../src/common/style/theme');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const projectPath = process.cwd();
+const donoConfig = require('../src/dono.config');
+const {fsExistsSync} = require('../src/util');
+
+
+const themePath = path.join(projectPath, donoConfig['less-theme']);
+
+let theme = {};
+
+
+if(fsExistsSync(themePath)) {
+	theme = require(themePath);
+}
+
 
 let webpackConfig = {
-	entry: entryConfig.webpack,
+	entry: {},
 	output: {
 		filename: '[name]_[hash:8].js',
 		path: path.join(__dirname, '../assets'),
-		publicPath: "http://www.lgstatic.com:9000"
+		publicPath: ""
 	},
 	devtool: false,
 	watch: false,
@@ -71,9 +82,6 @@ let webpackConfig = {
 	},
 	plugins: [
 		new ExtractTextPlugin('[name]_[hash:8].css'),
-		new webpack.DllReferencePlugin({
-			manifest: manifest
-		}),
 		new webpack.optimize.ModuleConcatenationPlugin(),
 		new UglifyJsPlugin()
 	]
