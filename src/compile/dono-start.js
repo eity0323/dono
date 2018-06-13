@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const projectPath = process.cwd();
-const {fsExistsSync} = require('../util');
+const {fsExistSync} = require('../util');
 const donoConfig = require('../dono.config');
 const color = require('colors');
 
@@ -49,7 +49,7 @@ module.exports = async ({env}) => {
 
 	webpackProConfig.output.publicPath = donoConfig['production-publicPath']
 
-	if(fsExistsSync(manifestPath)) {
+	if(fsExistSync(manifestPath)) {
 		handleDllPlugins(env, manifestPath);
 	}
 	else {

@@ -1,0 +1,9 @@
+node_modules/
+.idea
+
+.DS_Store
+assets
+releaseMdsPiplineFed.static.tar.gz
+releaseMdsPiplineFed.template.tar.gz
+template
+static

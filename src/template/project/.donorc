@@ -1,0 +1,11 @@
+{
+	"less-theme": "./src/common/style/theme.js",
+	"publicPath": "/",
+	"dll-output-path": "./assets/common/javascript/",
+	"output-path": "./assets",
+	"server-root": "./assets",
+	"mock-config": "./build/server/config.js",
+	"common-template": "./build/template.js",
+	"view-engine": "default",
+	"production-publicPath": "http://www.lgstatic.com"
+}

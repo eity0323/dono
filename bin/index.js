@@ -4,13 +4,13 @@ const program = require('commander');
 
 const fs = require('fs');
 const path = require('path');
-const {fsExistsSync} = require('../src/util');
+const {fsExistSync} = require('../src/util');
 const projectPath = process.cwd();
 
 const donorcTpl = require('../src/template/donorc.json');
 
 
-if(!fsExistsSync(path.join(projectPath, './.donorc'))) {
+if(!fsExistSync(path.join(projectPath, './.donorc'))) {
 	try {
 		fs.writeFileSync(path.join(projectPath, './.donorc'), JSON.stringify(donorcTpl, null, '\t'));
 	}

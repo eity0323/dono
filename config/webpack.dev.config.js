@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const projectPath = process.cwd();
 const donoConfig = require('../src/dono.config');
-const {fsExistsSync} = require('../src/util');
+const {fsExistSync} = require('../src/util');
 
 
 const publicPath = '';
@@ -15,7 +15,7 @@ const themePath = path.join(projectPath, donoConfig['less-theme']);
 let theme = {};
 
 
-if(fsExistsSync(themePath)) {
+if(fsExistSync(themePath)) {
 	theme = require(themePath);
 }
 

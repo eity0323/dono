@@ -1,0 +1,45 @@
+.header-nav {
+	float: left;
+	margin-left: 70px;
+
+	.header-nav-item {
+		float: left;
+		padding: 0 15px;
+		margin-right: 13px;
+		cursor: pointer;
+		position: relative;
+
+		&.active,
+		&:hover {
+			color: #fff;
+			background-color: #24272D;
+		}
+
+		.header-nav-new-icon {
+			position: absolute;
+			display: inline-block;
+			width: 27px;
+			height: 14px;
+			right: -14px;
+			top: 4px;
+			line-height: 14px;
+			text-align: center;
+
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.header-nav-title {
+			color: #afb5c0;
+		}
+	}
+
+	&:after {
+		content: ' ';
+		display: block;
+		width: 0;
+		height: 0;
+		clear: both;
+	}
+}

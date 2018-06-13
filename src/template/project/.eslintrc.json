@@ -1,0 +1,55 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"commonjs": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/all"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"experimentalObjectRestSpread": true,
+			"jsx": true
+		},
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react"
+	],
+	"rules": {
+		"indent": [
+			"error",
+			"tab"
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"quotes": 0,
+		"semi": [
+			"error",
+			"always"
+		],
+		"react/jsx-indent": [
+			"error",
+			"tab"
+		],
+		"react/jsx-filename-extension": ["error", {"extensions": [".js", ".jsx"] }],
+		"react/destructuring-assignment": 0,
+		"react/prop-types": 0,
+		"react/jsx-indent-props": ["error", "tab"],
+		"react/jsx-sort-props": 0,
+		"react/forbid-component-props": 0,
+		"react/jsx-handler-names": 0,
+		"react/jsx-no-literals": 0,
+		"react/jsx-one-expression-per-line": 0,
+		"react/jsx-max-depth": 0,
+		"react/no-array-index-key": 0,
+		"react/jsx-no-bind": 0,
+		"react/prefer-stateless-function": ["warn"],
+		"react/display-name": 0,
+		"react/no-this-in-sfc": 0
+	}
+}

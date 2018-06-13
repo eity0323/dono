@@ -2,32 +2,21 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const manifest = require('../assets/common/javascript/vendor-manifest.json');
+const entryConfig = require('./entry.config');
 
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const projectPath = process.cwd();
-const donoConfig = require('../src/dono.config');
-const {fsExistSync} = require('../src/util');
+let theme = require('../src/common/style/theme');
 
-
-const themePath = path.join(projectPath, donoConfig['less-theme']);
-
-let theme = {};
-
-
-if(fsExistSync(themePath)) {
-	theme = require(themePath);
-}
-
+const publicPath = '';
 
 let webpackConfig = {
-	entry: {},
+	entry: entryConfig.webpack,
 	output: {
-		filename: '[name]_[hash:8].js',
+		filename: '[name].js',
 		path: path.join(__dirname, '../assets'),
-		publicPath: ""
+		publicPath: publicPath
 	},
 	devtool: false,
-	watch: false,
 	module: {
 		rules: [{
 			test: /\.(jsx|js)$/,
@@ -71,7 +60,7 @@ let webpackConfig = {
 			use: [{
 				loader: "url-loader",
 				options: {
-					limit: 5120,
+					limit: 1024,
 					fallback: 'file-loader',
 					name: '[path][name].[ext]',
 					context: 'src/',
@@ -81,9 +70,10 @@ let webpackConfig = {
 		}]
 	},
 	plugins: [
-		new ExtractTextPlugin('[name]_[hash:8].css'),
-		new webpack.optimize.ModuleConcatenationPlugin(),
-		new UglifyJsPlugin()
+		new ExtractTextPlugin('[name].css'),
+		new webpack.DllReferencePlugin({
+			manifest: manifest
+		}),
 	]
 };
 

@@ -1,0 +1,33 @@
+.header-notice-box {
+	float: left;
+	margin-left: 20px;
+
+	.header-notice-icon {
+		font-size: 16px;
+		color: #797f8c;
+		cursor: pointer;
+	}
+}
+
+.header-notice-pop-content {
+	width: 360px;
+	height: 300px;
+}
+.header-notice-pop-title {
+	height: 45px;
+	line-height: 45px;
+	.header-notice-pop-title-msg-word {
+		float: left;
+	}
+	.header-notice-pop-title-markread {
+		float: right;
+		cursor: pointer;
+	}
+	&:after {
+		content: ' ';
+		height: 0;
+		display: block;
+		width: 0;
+		clear: both;
+	}
+}
