@@ -1,5 +1,46 @@
 
-> 一个项目启动的工具，用到的技术有，react + redux + webpack + koa + less + antd，形成了一个命令行工具。
+## 项目目录
+
+- project-root: 项目根目录
+    - assets: 构建后目录
+    - build: 构建工具及配置文件目录
+        - server: 开发服务器源码
+            - config.js: 可配置模拟接口文件
+            - control.js: 控制器文件
+            - index.js: 服务器入口文件
+            - render.js: 模版渲染中间件
+            - router.js: 路由中间件
+        - start.js: 服务器启动入口
+        - template.js: 公共模版模块
+        - webpack.pro.config.js: 生产环境配置文件
+        - webpack.dev.config.js: 开发环境配置文件
+        - webpack.dll.config.js: dll插件配置文件
+    - src: 业务源码目录
+        - page: 一个页面的源码目录
+            - components: 一个页面内部组件目录
+            - container: 页面容器组件
+            - entry: 页面入口
+            - page: 页面模版，html文件
+            - reducers: 页面的reducer
+            - action: redux的action，页面相关
+        - common: 公用文件
+            - components: 公用的业务组件
+                - Header: 公用头部
+                - Layout: 通用布局
+                - SubNav: 二级菜单
+            - fonts: 字体文件
+            - images: 项目图片存放
+            - javascript: 公用js
+            - store: 全局store，及连接redux统一方法
+            - style: 全局样式表
+                - base.less: 基础样式表
+                - reset.less: 初始化样式表
+                - theme.js: antd的主题样式
+        - BaseComponent.js: 通用基础基类
+
+
+
+#### 一个项目启动的工具
 
 #### dono start
 
@@ -17,7 +58,7 @@
 
 
 
-项目根目录下需要建立一个.donorc配置文件，不手动建立的话，会在第一次启动的时候检测到，并且自动创建。
+#### 项目根目录下需要建立一个.donorc配置文件，不手动建立的话，会在第一次启动的时候检测到，并且自动创建。
 
 配置的每一个字段意义如下：
 
