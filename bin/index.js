@@ -25,4 +25,5 @@ program
 	.command('server', '启动前端服务器')
 	.command('build', '启动生产环境编译')
 	.command('init', '初始化项目目录')
+	.command('initc', '初始化组件')
 	.parse(process.argv);

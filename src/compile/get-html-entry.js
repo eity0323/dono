@@ -5,6 +5,7 @@ const path = require('path');
 const getEntryJs = require('./get-js-entry');
 const cheerio = require('cheerio');
 
+const donoConfig = require('../dono.config');
 
 const projectPath = process.cwd();
 
@@ -12,7 +13,9 @@ module.exports = async () => {
 
 	let result = {};
 
-	let htmlFiles = glob.sync(path.join(projectPath, './src/**/page/*.html'));
+	let defaultHtmlEntry = donoConfig['html-entry'] || './src/**/page/*.html';
+
+	let htmlFiles = glob.sync(path.join(projectPath, defaultHtmlEntry));
 	let jsFiles = await getEntryJs();
 
 	try {

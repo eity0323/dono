@@ -2,7 +2,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const projectPath = process.cwd();
+// 工具库
 const {fsExistSync} = require('../util');
+// 项目配置文件
 const donoConfig = require('../dono.config');
 const color = require('colors');
 
@@ -21,11 +23,12 @@ const webpackProConfig = require('../../config/webapck.pro.config');
 let dllOutput = path.join(projectPath, './assets/common/javascript/');
 let devOutput = path.join(projectPath, './assets');
 
-// 如果配置里有
+// 设置dll的输出路径
 if(donoConfig['dll-output-path']) {
 	dllOutput = path.join(projectPath, donoConfig['dll-output-path'])
 }
 
+// 输出路径
 if(donoConfig['output-path']) {
 	devOutput = path.join(projectPath, donoConfig['output-path']);
 }
@@ -39,16 +42,22 @@ let initHtml = false;
 
 module.exports = async ({env}) => {
 
+	// 设置webpack的js入口路径
 	webpackDevConfig.entry = webpackProConfig.entry = await getJsEntry();
 
+	// 设置dll的webpack的输出路径
 	webpackDllConfig.output.path = dllOutput;
 
+	// 设置项目的输出路径
 	webpackDevConfig.output.path = webpackProConfig.output.path = devOutput;
 
+	// 设置开发环境的静态资源域名或者前缀
 	webpackDevConfig.output.publicPath = donoConfig['publicPath'];
 
+	// 设置生产环境的静态资源的域名
 	webpackProConfig.output.publicPath = donoConfig['production-publicPath']
 
+	// 根据是否有manifest文件来判断是否执行过dll优化
 	if(fsExistSync(manifestPath)) {
 		handleDllPlugins(env, manifestPath);
 	}
@@ -59,6 +68,7 @@ module.exports = async ({env}) => {
 
 	let devCompiler = null;
 
+	// 检查环境，如果是production则运行生产环境配置
 	if(env === 'production') {
 		devCompiler = webpack(webpackProConfig);
 	}
@@ -66,6 +76,7 @@ module.exports = async ({env}) => {
 		devCompiler = webpack(webpackDevConfig)
 	}
 
+	// 检查环境，运行编译器，开发环境默认watch
 	if(env === 'production') {
 		devCompiler.run(handleCompile);
 	}
@@ -79,6 +90,7 @@ module.exports = async ({env}) => {
 	}
 };
 
+// 添加dll插件
 function handleDllPlugins(env, manifestPath) {
 	let dllPluginsIns = new webpack.DllReferencePlugin({
 		manifest: require(manifestPath)
@@ -91,6 +103,8 @@ function handleDllPlugins(env, manifestPath) {
 	}
 }
 
+// 处理webpack运行的回调函数
+// 包括错误输出等功能
 function handleCompile(err, stat) {
 	let error = false;
 	if(err) {
@@ -116,6 +130,7 @@ function handleCompile(err, stat) {
 	}
 }
 
+// 运行dll的函数
 async function runDll(config) {
 	return new Promise((resolve, reject) => {
 		webpack(config, (err, stat) => {

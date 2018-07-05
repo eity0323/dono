@@ -12,13 +12,6 @@ const templateProjectPath = path.join(__dirname, '../template/project');
 
 module.exports = (name) => {
 
-
-
-	try {
-		copyDirSync(templateProjectPath, projectPath);
-	}
-	catch(e) {
-		console.log(e);
-	}
+	console.log(`在这里初始化一个叫做${name}的项目`);
 
 };

@@ -1,12 +1,12 @@
 #!usr/bin/env node
 
 const program = require('commander');
-const initProject = require('../src/init/init-project');
+const initComponent = require('../src/init/init-component');
 
 program
 	.usage('<projectname>')
 	.parse(process.argv);
 
 
-initProject(program.args[0]);
+initComponent(program.args[0]);
 
