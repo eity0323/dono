@@ -2,22 +2,22 @@
 
 const program = require('commander');
 
-const fs = require('fs');
-const path = require('path');
-const {fsExistSync} = require('../src/util');
-const projectPath = process.cwd();
-
-const donorcTpl = require('../src/template/donorc.json');
-
-
-if(!fsExistSync(path.join(projectPath, './.donorc'))) {
-	try {
-		fs.writeFileSync(path.join(projectPath, './.donorc'), JSON.stringify(donorcTpl, null, '\t'));
-	}
-	catch(e) {
-
-	}
-}
+// const fs = require('fs');
+// const path = require('path');
+// const {fsExistSync} = require('../src/util');
+// const projectPath = process.cwd();
+//
+// const donorcTpl = require('../src/template/donorc.json');
+//
+//
+// if(!fsExistSync(path.join(projectPath, './.donorc'))) {
+// 	try {
+// 		fs.writeFileSync(path.join(projectPath, './.donorc'), JSON.stringify(donorcTpl, null, '\t'));
+// 	}
+// 	catch(e) {
+//
+// 	}
+// }
 
 program
 	.version('0.0.1')
